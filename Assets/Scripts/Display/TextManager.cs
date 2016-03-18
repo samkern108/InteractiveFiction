@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class TextManager : MonoBehaviour {
 
-	public static Dictionary<string, TextBlobjectJSON> blobjects;
+	public static Dictionary<string, TextBlobjectPrefab> blobjects;
 	public static TextManager instance;
 	private ArrayList activeBlobs = new ArrayList();
 	public GameObject textBlobPrefab;
@@ -12,7 +12,7 @@ public class TextManager : MonoBehaviour {
 	void Start () 
 	{
 		instance = this;
-		blobjects = new Dictionary<string, TextBlobjectJSON> ();
+		blobjects = new Dictionary<string, TextBlobjectPrefab> ();
 	}
 
 	public void ConstructBlobState()
@@ -25,7 +25,7 @@ public class TextManager : MonoBehaviour {
 	{
 		GameObject blob = Instantiate(textBlobPrefab);
 		blob.transform.SetParent (this.gameObject.transform);
-		TextBlobObject blobject = blob.GetComponent<TextBlobObject> ();
+		TextBlobjectPrefab blobject = blob.GetComponent<TextBlobjectPrefab> ();
 		blobject.InitializeBlob (blob, text, blobStates);
 		activeBlobs.Add (blob);
 	}
@@ -40,7 +40,7 @@ public class TextManager : MonoBehaviour {
 		for(int i = 0; i < activeBlobs.Count; i++)
 		{
 			GameObject blob = (GameObject)activeBlobs[i];
-			TextBlobObject blobject = blob.GetComponent<TextBlobObject>();
+			TextBlobjectPrefab blobject = blob.GetComponent<TextBlobjectPrefab>();
 			bool destroy = blobject.UpdateSelf(dt);
 			if(destroy) {
 				activeBlobs.Remove(blob);

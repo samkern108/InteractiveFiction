@@ -1,73 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class PlayerMovement : MonoBehaviour {
 
-	float speed = 1;
-	float turnSpeedDampener = 20;
-	float angle = Mathf.PI/2;
-	float updateTicker = 0;
-	float updateMaxTicks = 2;
+	const float speed = 10f;
+	const float turnSpeed = 2f;
+	float angle = 0;
+	const float twoPI = Mathf.PI * 2;
 
-	Vector2 moveVector = Vector2.zero;
-	
-	void Start () {
-		Player.position = new Global.Position (new Vector2(0,0), new Vector2(0,0));
-	}
+	Vector2 moveVector;
+	private Position position;
 
-	void FixedUpdate () {
+	bool sendNotification = false;
+	Vector2 newPosition;
+
+	void Update () 
+	{
 		//Vertical   : Move forward/backwards
 		//Horizontal : Turn left/right
-
-		//Come up with a more intelligent way of moderating framerate.
-		/*if (updateTicker >= updateMaxTicks) {
-			updateTicker = 0;
-		} else {
-			updateTicker++;
-			return;
-		}*/
-
 		moveVector = new Vector2 (Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
-	
-		Vector2 newPosition = Player.position.posV;
 
-		if (moveVector.x < 0) {
-			newPosition = Player.position.MoveWithSpeed(-speed);
-		} else if (moveVector.x > 0) {
-			newPosition = Player.position.MoveWithSpeed(speed);
-		}
-
-		if (newPosition != Player.position.posV && ProcessMovement(newPosition)) {
-			Player.position.posV = newPosition;
-			SendMovementNotificationOnTimer(NotificationSystem.Notification.playerMoved);
-		}
-
-		if (moveVector.y < 0) {
-			angle += (speed / turnSpeedDampener);
-			if (angle > 2 * Mathf.PI) {
-				angle -= 2 * Mathf.PI;
-			}
-		} else if (moveVector.y > 0) {
-			angle -= (speed / turnSpeedDampener);
-			if (angle < 0) {
-				angle += 2*Mathf.PI;
-			}
-		}
+		newPosition = position.posV;
 
 		if (moveVector.y != 0) {
-			Player.position.dirV = new Vector2(Mathf.Cos (angle), Mathf.Sin (angle));
-			SendMovementNotificationOnTimer(NotificationSystem.Notification.playerTurned);
+			angle += (-moveVector.y * (turnSpeed  * Time.deltaTime));
+			angle %= (twoPI);
+			if (angle < 0) {
+				angle += twoPI;
+			}
+			
+			position.RotateToAngle(angle);
+			sendNotification = true;
 		}
-	}
 
-	private void SendMovementNotificationOnTimer(NotificationSystem.Notification notification) 
-	{
-		NotificationSystem.instance.SendNotificationWithValue(notification, Player.position);
-	}
+		if (moveVector.x != 0) {
+			bool hit = Physics2D.Raycast (transform.position, Mathf.Sign(moveVector.x) * position.dirV, 5, 1 << LayerMask.NameToLayer ("Impassable"));
+			if (!hit) {
+				position.MoveWithSpeed((speed * Time.deltaTime) * moveVector.x);
+			}
 
-	private bool ProcessMovement(Vector2 newPosition)
-	{
-		return true;//ActiveRoomManager.DetectCollision (newPosition);
+			if(ActiveRoomManager.self.PlayerInsideRoom (newPosition)) {
+				sendNotification = true;
+				transform.position = new Vector3(newPosition.x, newPosition.y, -7);
+			}
+		}
+
+		if (sendNotification) {
+			NotificationSystem.instance.SendNotificationWithValue(Notification.PlayerMoved, position);
+			sendNotification = false;
+		}
 	}
 }

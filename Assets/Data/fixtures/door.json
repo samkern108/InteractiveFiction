@@ -1,0 +1,21 @@
+{
+	"name": "door",
+	"nameFancy": "Door",
+	"midpoint": {
+		"x": 100,
+		"y": 100
+	},
+	"bounds": [{
+		"radius": 5,
+		"text": "The handle of the door is frigid. It must be cold out there.",
+		"prompt": {
+			"button": "x",
+			"text": "Press X To Open Door"
+		},
+		"passable": false
+	}, {
+		"radius": 20,
+		"text": "The door is creaking from the buffeting winds.",
+		"passable": true
+	}]
+}

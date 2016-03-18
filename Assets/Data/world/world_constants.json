@@ -1,0 +1,53 @@
+{
+	"weatherConstants": {
+		"sunny_mild": "Sunny Mild",
+		"sunny_med": "Sunny Medium",
+		"sunny_harsh": "Sunny Harsh",
+		"cloudy_mild": "Cloudly Mild",
+		"cloudy_med": "Cloudy Medium",
+		"cloudyharsh": "Cloudy Harsh",
+		"windy_mild": "Windy Mild",
+		"windy_med": "Windy Medium",
+		"windy_harsh": "Windy Harsh",
+		"snowy_mild": "Snowy Mild",
+		"snowy_med": "Snowy Medium",
+		"snowy_harsh": "Snowy Harsh",
+		"rainy_mild": "Rainy Mild",
+		"rainy_med": "Rainy Medium",
+		"rainy_harsh": "Rainy Harsh"
+	},
+	"dayConstants": {
+		"monday": "Monday",
+		"tuesday": "Tuesday",
+		"wednesday": "Wednesday",
+		"thursday": "Thursday",
+		"friday": "Friday",
+		"saturday": "Saturday",
+		"sunday": "Sunday"
+	},
+	"seasonConstants": {
+		"spring_early": "Early Spring",
+		"spring_med": "Spring",
+		"spring_late": "Late Spring",
+		"winter_early": "Early Winter",
+		"winter_med": "Winter",
+		"winter_late": "Late Winter",
+		"fall_early": "Early Fall",
+		"fall_med": "Fall",
+		"fall_late": "Late Fall",
+		"summer_early": "Early Summer",
+		"summer_med": "Summer",
+		"summer_late": "Late Summer"
+	},
+	"timeConstants": {
+		"morning_early": "Early Morning",
+		"morning_med": "Morning",
+		"afternoon_early": "Early Afternoon",
+		"afternoon_med": "Afternoon",
+		"evening_early": "Early Evening",
+		"evening_med": "Evening",
+		"night_med": "Night",
+		"night_late": "Late Night",
+		"night_deep": "Deep Night"
+	}
+}

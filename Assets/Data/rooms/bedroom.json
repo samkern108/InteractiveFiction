@@ -1,0 +1,12 @@
+{
+	"name": "bedroom",
+	"nameFancy": "Bedroom",
+	"bounds": [
+		{x:100, y:100},
+		{x:-100, y:100},
+		{x:-100, y:-100},
+		{x:100, y:-100},
+	],
+	"fixtures": ["fireplace","lamp","door"],
+	"items": []
+}

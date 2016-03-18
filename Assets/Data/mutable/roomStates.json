@@ -1,0 +1,10 @@
+{
+"bedroom":{
+	"name": "bedroom",
+	"npcs": []
+}, 
+"livingroom":{
+	"name": "livingroom",
+	"npcs": []
+}
+}

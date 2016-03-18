@@ -1,0 +1,26 @@
+{
+	"name": "fireplace",
+	"nameFancy": "Fireplace",
+	"midpoint": {
+		"x": 50,
+		"y": 10
+	},
+	"jukeboxes": [{
+		"name": "fireplace",
+		"clip": "fireplace",
+		"volume": 40,
+		"auto_play": false
+	}],
+	"bounds": [{
+		"radius": 10,
+		"text": "Fireplace impassable.",
+		"passable": false
+	}, {
+		"radius": 50,
+		"audio": {
+			"jukebox": "fireplace"
+		},
+		"text": "Fireplace passable.",
+		"passable": true
+	}]
+}

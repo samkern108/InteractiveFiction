@@ -5,34 +5,44 @@ using UnityEngine.UI;
 
 public class Compass : MonoBehaviour {
 
+	public static Compass instance;
 	public GameObject compassTextPrefab;
 	public List<CompassTextObject> textList = new List<CompassTextObject>();
 
-	void Start () {
-		UpdateCompassObjects ();
-	}
+	private bool draw;
 
-	public void UpdateCompassObjects()
+	void Start()
 	{
-		NewTextObject ("Fireplace", new Vector2(10,0));
-		//NewTextObject ("Door", new Vector2(100, 0));
+		instance = this;
+		if (ActiveRoomManager.self != null && !ActiveRoomManager.self.compassInitialized) {
+			ActiveRoomManager.self.AddAllCompassFixtures();
+		}
 	}
 
-	private void DrawObjects() {
-		foreach (CompassTextObject t in textList) {
-			Vector2 distToMidpoints = t.mid - Player.position.posV;
-			Vector2 directions = Player.position.dirV;
+	void FixedUpdate() {
+		draw = true;
+	}
 
-			float dist = Vector2.Distance(Player.position.posV, t.mid);
+	public void AddCompassObject(FixtureInfo f)
+	{
+		NewTextObject (f.nameFancy, f.midpoint);
+	}
+
+	private void DrawObjects(Position player) {
+		foreach (CompassTextObject t in textList) {
+			Vector2 distToMidpoints = t.mid - player.posV;
+			Vector2 directions = player.dirV;
+
+			float dist = Vector2.Distance(player.posV, t.mid);
 			float angle = Mathf.DeltaAngle(Mathf.Atan2(directions.y, directions.x) * Mathf.Rad2Deg,
 			                               Mathf.Atan2(distToMidpoints.y, distToMidpoints.x) * Mathf.Rad2Deg);
 
-			Debug.Log ("PLAYER -  p:  " + Player.position.posV);
-			Debug.Log ("FIREPLACE:  " + t.mid.x + " , " + t.mid.y + " ::  " + dist);
+			//Debug.Log ("FIREPLACE:  " + t.mid.x + " , " + t.mid.y + " ::  " + dist);
 			
-			Debug.Log ("Look Dir:  " + Player.position.dirV  + "  angle:  " + angle);
+			//Debug.Log ("Pos:  " + player.posV + "  Look:  " + player.dirV  + "  angle:  " + angle);
 
-			if (angle < 0) {
+			if (angle <= 90 && angle >= -90) {
+
 				float opacity = 0;
 				if (dist < 400) {
 					opacity = 15 * (80/dist);
@@ -42,7 +52,10 @@ public class Compass : MonoBehaviour {
 
 				t.myText.color = new Color(t.myText.color.r, t.myText.color.g, t.myText.color.b, (int)(255/opacity));
 				t.myText.fontSize = (int)(opacity > 60 ? 60 : opacity);
-				t.myText.transform.localPosition = new Vector3 (Map(textPosition, -180, 0, -280, 280), 15, 0);
+				t.myText.transform.localPosition = new Vector3 (Map(textPosition, -90, 90, -280, 280), 0, 0);
+			}
+			else {
+				t.myText.color = new Color(0,0,0,0);
 			}
 		}
 	}
@@ -52,7 +65,6 @@ public class Compass : MonoBehaviour {
 	}
 
 	public void NewTextObject(string text, Vector2 midpoint) {
-		Debug.Log ("New Text Object:  " + text);
 		CompassTextObject t = Instantiate (compassTextPrefab).GetComponent ("CompassTextObject") as CompassTextObject;
 		t.gameObject.transform.SetParent (this.gameObject.transform, true);
 		t.gameObject.transform.localPosition = new Vector2 (0,15);
@@ -60,11 +72,10 @@ public class Compass : MonoBehaviour {
 		textList.Add (t);
 	}
 	
-	public void playerMoved() {
-		DrawObjects ();
-	}
-
-	public void playerTurned() {
-		DrawObjects ();
+	public void PlayerMoved(Position pos) {
+		if (draw) {
+			DrawObjects (pos);
+			draw = false;
+		}
 	}
 }
