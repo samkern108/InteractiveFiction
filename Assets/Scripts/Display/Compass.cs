@@ -14,13 +14,30 @@ public class Compass : MonoBehaviour {
 	void Start()
 	{
 		instance = this;
-		if (ActiveRoomManager.self != null && !ActiveRoomManager.self.compassInitialized) {
-			ActiveRoomManager.self.AddAllCompassFixtures();
-		}
 	}
 
-	void FixedUpdate() {
+	void FixedUpdate() 
+	{
 		draw = true;
+	}
+
+	public void ClearCompass()
+	{
+		textList = new List<CompassTextObject> ();
+	}
+
+	public void LoadCompassObjects(FixtureInfo[] f)
+	{
+		ClearCompass ();
+		for(int i = 0; i < f.Length; i++)	
+			NewTextObject (f[i].nameFancy, f[i].midpoint);
+	}
+
+	public void LoadCompassObjects(List<FixtureInfo> f)
+	{
+		ClearCompass ();
+		for(int i = 0; i < f.Count; i++)	
+			NewTextObject (f[i].nameFancy, f[i].midpoint);
 	}
 
 	public void AddCompassObject(FixtureInfo f)
@@ -37,10 +54,6 @@ public class Compass : MonoBehaviour {
 			float angle = Mathf.DeltaAngle(Mathf.Atan2(directions.y, directions.x) * Mathf.Rad2Deg,
 			                               Mathf.Atan2(distToMidpoints.y, distToMidpoints.x) * Mathf.Rad2Deg);
 
-			//Debug.Log ("FIREPLACE:  " + t.mid.x + " , " + t.mid.y + " ::  " + dist);
-			
-			//Debug.Log ("Pos:  " + player.posV + "  Look:  " + player.dirV  + "  angle:  " + angle);
-
 			if (angle <= 90 && angle >= -90) {
 
 				float opacity = 0;
@@ -52,16 +65,12 @@ public class Compass : MonoBehaviour {
 
 				t.myText.color = new Color(t.myText.color.r, t.myText.color.g, t.myText.color.b, (int)(255/opacity));
 				t.myText.fontSize = (int)(opacity > 60 ? 60 : opacity);
-				t.myText.transform.localPosition = new Vector3 (Map(textPosition, -90, 90, -280, 280), 0, 0);
+				t.myText.transform.localPosition = new Vector3 (textPosition.Map(-90, 90, -280, 280), 0, 0);
 			}
 			else {
 				t.myText.color = new Color(0,0,0,0);
 			}
 		}
-	}
-
-	private float Map(float s, float a1, float a2, float b1, float b2){
-		return b1 + (s-a1)*(b2-b1)/(a2-a1);
 	}
 
 	public void NewTextObject(string text, Vector2 midpoint) {

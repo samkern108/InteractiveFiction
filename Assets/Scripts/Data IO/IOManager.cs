@@ -4,62 +4,47 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
-public class IOManager
+public static class IOManager
 {
 	private static string pathToDataFolder;
 
-	public IOManager()
+	public static void Initialize ()
 	{
 		pathToDataFolder = Application.dataPath + "/Data/";
-		LoadPlayerState ();
-		LoadRoomStates ();
-		LoadWorldConstants ();
-		//LoadFlags ();
 	}
 
-	public float[] LoadDateArray()
+	public static WorldState LoadWorldState()
 	{
 		string data = ReadFromFile ("/mutable/worldState");
-		
-		DataStore.worldState = JsonConvert.DeserializeObject<WorldState>(data);
-		return DataStore.worldState.clock;
+		return JsonConvert.DeserializeObject<WorldState>(data);
 	}
 
-	public void LoadWorldConstants()
+	public static WorldConstants LoadWorldConstants()
 	{
 		string data = ReadFromFile("/world/world_constants");
-		DataStore.worldConstants = JsonConvert.DeserializeObject<WorldConstants> (data);
+		return JsonConvert.DeserializeObject<WorldConstants> (data);
 	}
 
-	public void LoadFlags()
+	//Not working
+	/*public static void LoadFlags()
 	{
 		string data = ReadFromFile ("/mutable/flags");
-		//DataStore.flags = JsonConvert.DeserializeObject<Flag>(data);
-	}
+		return JsonConvert.DeserializeObject<Flag>(data);
+	}*/
 
-	private string ReadFromFile(string filepath)
-	{
-		StreamReader streamReader = new StreamReader(pathToDataFolder + filepath + ".json");
-		string data = streamReader.ReadToEnd ();
-		streamReader.Close();
-		return data;
-	}
-
-	private void LoadPlayerState()
+	public static PlayerState LoadPlayerState()
 	{
 		string data = ReadFromFile ("/mutable/playerState");
-		
-		DataStore.playerState = JsonConvert.DeserializeObject<PlayerState>(data);
+		return JsonConvert.DeserializeObject<PlayerState>(data);
 	}
 
-	private void LoadRoomStates()
+	public static RoomStates LoadRoomStates()
 	{
 		string data = ReadFromFile ("/mutable/roomStates");
-		
-		DataStore.roomStates = JsonConvert.DeserializeObject<RoomStates>(data);
+		return JsonConvert.DeserializeObject<RoomStates>(data);
 	}
 
-	public Room LoadRoom(string filename)
+	public static Room LoadRoom(string filename)
 	{
 		string data = ReadFromFile ("/rooms/"+filename);
 
@@ -72,7 +57,7 @@ public class IOManager
 		return newobject;
 	}
 
-	private FixtureInfo LoadFixture(string filename)
+	private static FixtureInfo LoadFixture(string filename)
 	{
 		string data = ReadFromFile ("/fixtures/"+filename);
 		
@@ -80,7 +65,7 @@ public class IOManager
 		return newobject;
 	}
 
-	private Item LoadItem(string filename)
+	private static Item LoadItem(string filename)
 	{
 		string data = ReadFromFile ("/items/"+filename);
 		
@@ -88,17 +73,26 @@ public class IOManager
 		return newobject;
 	}
 
-	private object LoadNPC(string filename)
+	private static object LoadNPC(string filename)
 	{
 		string data = ReadFromFile ("/npcs/"+filename);
 		
 		NPC newobject = JsonConvert.DeserializeObject<NPC>(data);
 		return newobject;
 	}
+
+
+	private static string ReadFromFile(string filepath)
+	{
+		StreamReader streamReader = new StreamReader(pathToDataFolder + filepath + ".json");
+		string data = streamReader.ReadToEnd ();
+		streamReader.Close();
+		return data;
+	}
 	
 	//once again, we should really only need to save a few objects.
 	//boolean flags, player state, room map, world state.
-	public void SerializeAndSave(object obj, string filename)
+	public static void SerializeAndSave(object obj, string filename)
 	{
 		string serialized = JsonConvert.SerializeObject(obj);
 	

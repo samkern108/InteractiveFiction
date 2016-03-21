@@ -1,6 +1,7 @@
 {
 	"name": "door",
 	"nameFancy": "Door",
+	"compass": true,
 	"midpoint": {
 		"x": 100,
 		"y": 100

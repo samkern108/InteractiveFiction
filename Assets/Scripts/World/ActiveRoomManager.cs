@@ -8,16 +8,19 @@ public class ActiveRoomManager : MonoBehaviour {
 
 	private Room activeRoom;
 	private int currentRadius;
-	public bool compassInitialized = false;
 
 	public GameObject fixturePrefab;
 
 	public List<Fixture> fixtures;
 
+	public void ForceUpdate()
+	{
+		AddAllCompassFixtures ();
+	}
+
 	void Start()
 	{
 		self = this;
-		compassInitialized = false;
 	}
 
 	public void SetActiveRoom(Room room)
@@ -40,17 +43,14 @@ public class ActiveRoomManager : MonoBehaviour {
 		InitializePolygonCollider ();
 	}
 
+	/**
+	 * 
+	 */
 	public void AddAllCompassFixtures()
 	{
-		if(Compass.instance == null || ActiveRoomManager.self.fixtures == null)
-		{
-			return;
-		}
-
 		foreach(Fixture f in fixtures) {
 			Compass.instance.NewTextObject (f.name(), f.midpoint());
 		}
-		compassInitialized = true;
 	}
 
 	public void DistanceFromWall(Position pos)

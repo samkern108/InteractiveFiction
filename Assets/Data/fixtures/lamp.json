@@ -1,6 +1,7 @@
 {
 	"name": "lamp",
 	"nameFancy": "Lamp",
+	"compass": true,
 	"midpoint": {x:0, y:-50},
 	"bounds": [{
 		"radius": 5,

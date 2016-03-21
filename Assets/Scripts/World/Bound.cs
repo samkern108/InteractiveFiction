@@ -87,4 +87,9 @@ public class Bound : MonoBehaviour {
 			}
 		}
 	}
+
+	public void ToggleVisuals()
+	{
+		GetComponent <SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+	}
 }

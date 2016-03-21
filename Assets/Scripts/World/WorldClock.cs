@@ -76,8 +76,8 @@ public class WorldClock : MonoBehaviour {
 	
 									  //s,  m,  h,  d,  m
 	byte[] timePerInterval = new byte[] {60, 60, 24, 28, 12};
-	float updateAmount = 100f;
-	public float[] dateArray;
+	float updateAmount = 1000f;
+	public static float[] dateArray;
 
 	public Season[] seasonOfMonth = new Season[] 
 	{
@@ -119,11 +119,17 @@ public class WorldClock : MonoBehaviour {
 	private Clock clock;
 	public Calendar calendar;
 
+	public static void SetDate(float[] ar)
+	{
+		dateArray = ar;
+	}
+
 	void Start () {
 		calendar.currentSeason = Season.winter_med;
 	}
 	
 	void Update () {
+
 		if (dateArray.Length == 0) {
 			return;
 		}
@@ -157,11 +163,14 @@ public class WorldClock : MonoBehaviour {
 	private void updateTimeOfDay()
 	{
 		clock.timeOfDay = timeOfDayForHour[hour()];
+		//UIManager.SetClock (DataStore.worldConstants.timeConstants[clock.timeOfDay.ToString()]);
+		//Debug.Log (DataStore.worldConstants.timeConstants[clock.timeOfDay.ToString()]);
 	}
 
 	private void updateSeason()
 	{
 		calendar.currentSeason = seasonOfMonth[month()];
+		UIManager.SetSeason (DataStore.worldConstants.seasonConstants[calendar.currentSeason.ToString()]);
 	}
 
 	public float seconds()

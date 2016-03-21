@@ -39,6 +39,7 @@ public class FixtureInfo
 {
 	public string name { get; set; }
 	public string nameFancy { get; set; }
+	public bool compass { get; set; }
 	public Vector2 midpoint { get; set; }
 	public BoundInfo[] bounds { get; set; }
 	public JukeboxInfo[] jukeboxes { get; set; }

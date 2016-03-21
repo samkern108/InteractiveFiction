@@ -18,14 +18,19 @@ public enum WeatherType
 	rainy_mild,
 	rainy_med,
 	rainy_harsh
-
 };
 
 public class WeatherSystem : MonoBehaviour {
 
-	Weather weather;
+	static Weather weather;
+	bool weatherChange = true;
 
-	public void worldTick()
+	public static void SetWeather(Weather w)
+	{
+		weather = w;
+	}
+
+	public void WorldTick()
 	{
 		recalculateTemperature ();
 		progressWeather ();
@@ -38,5 +43,9 @@ public class WeatherSystem : MonoBehaviour {
 
 	private void progressWeather()
 	{
+		if (weatherChange) {
+			UIManager.SetWeather (DataStore.worldConstants.weatherConstants [weather.weatherType]);
+			weatherChange = false;
+		}
 	}
 }

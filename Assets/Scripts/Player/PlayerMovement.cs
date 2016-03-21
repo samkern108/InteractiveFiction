@@ -49,5 +49,10 @@ public class PlayerMovement : MonoBehaviour {
 			NotificationSystem.instance.SendNotificationWithValue(Notification.PlayerMoved, position);
 			sendNotification = false;
 		}
+
+		if (Input.GetButtonDown("ToggleGraphics")) {
+			NotificationSystem.instance.SendNotification (Notification.ToggleVisuals);
+			GetComponent <SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+		}
 	}
 }

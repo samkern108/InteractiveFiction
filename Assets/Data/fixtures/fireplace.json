@@ -1,6 +1,7 @@
 {
 	"name": "fireplace",
 	"nameFancy": "Fireplace",
+	"compass": true,
 	"midpoint": {
 		"x": 50,
 		"y": 10
@@ -13,14 +14,14 @@
 	}],
 	"bounds": [{
 		"radius": 10,
-		"text": "Fireplace impassable.",
+		"text": "My boots are drying by the crackling logs. I should put the soup on before I get too hungry.",
 		"passable": false
 	}, {
 		"radius": 50,
 		"audio": {
 			"jukebox": "fireplace"
 		},
-		"text": "Fireplace passable.",
+		"text": "The fireplace is crackling heartily.",
 		"passable": true
 	}]
 }

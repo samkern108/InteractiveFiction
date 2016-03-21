@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Notification {CalendarTick, WorldTick, PlayerMoved, PlayerButtonPress, WeatherChange};
+public enum Notification {ForceUpdate, CalendarTick, WorldTick, PlayerMoved, PlayerButtonPress, WeatherChange, ToggleVisuals};
 
 public class NotificationSystem : MonoBehaviour {
 	
