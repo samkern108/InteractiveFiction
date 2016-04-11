@@ -12,10 +12,17 @@ public class PlayerActions : MonoBehaviour {
 		buttonsDown.Add ("d", true);
 		buttonsDown.Add ("f", true);
 		buttonsDown.Add ("r", true);
+		buttonsDown.Add ("g", true);
 	}
 
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.D)) {
+
+		buttonsDown["d"] = Input.GetKeyDown (KeyCode.D);
+		buttonsDown["f"] = Input.GetKeyDown (KeyCode.D);
+		buttonsDown["r"] = Input.GetKeyDown (KeyCode.D);
+		buttonsDown["g"] = Input.GetKeyDown (KeyCode.D);
+
+		/*if (Input.GetKeyDown (KeyCode.D)) {
 			buttonsDown["d"] = true;
 		} else {
 			buttonsDown["d"] = false;
@@ -30,5 +37,10 @@ public class PlayerActions : MonoBehaviour {
 		} else {
 			buttonsDown["r"] = false;
 		}
+		if (Input.GetKeyDown (KeyCode.G)) {
+			buttonsDown ["g"] = true;
+		} else {
+			buttonsDown ["g"] = false;			
+		}*/
 	}
 }
