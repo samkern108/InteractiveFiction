@@ -41,8 +41,17 @@ public class FixtureInfo
 	public string nameFancy { get; set; }
 	public bool compass { get; set; }
 	public Vector2 midpoint { get; set; }
+	public Dictionary<string,Condition> conditions { get; set; }
 	public BoundInfo[] bounds { get; set; }
 	public JukeboxInfo[] jukeboxes { get; set; }
+}
+
+[System.Serializable]
+public class Condition
+{
+	public string name { get; set; }
+	public float value { get; set; }
+	public float increase { get; set; }
 }
 
 [System.Serializable]
@@ -56,25 +65,42 @@ public class ItemRef
 public class BoundInfo
 {
 	public int radius { get; set; }
-	public string text { get; set; }
+	public TextCondition[] textConditions { get; set; }
 	public bool passable { get; set; }
+	public AudioInstr audio { get; set; }
+}
+
+[System.Serializable]
+public class TextCondition
+{
+	public string name { get; set; }
+	public TextInterval[] intervals { get; set; }
+}
+
+[System.Serializable]
+public class TextInterval
+{
+	public float start { get; set; }
+	public string text { get; set; }
 	public Prompt prompt { get; set; }
 	public Exit exit { get; set; }
-	public AudioInstr audio { get; set; }
 }
 
 [System.Serializable]
 public class Exit
 {
 	public string endRoom { get; set; }
+	public string entrance { get; set; }
 	public string flag { get; set; }
 }
 
 [System.Serializable]
 public class Prompt
 {
-	public string button { get; set; }
 	public string text { get; set; }
+	public string button { get; set; }
+	public Condition condition { get; set; }
+	public Exit exit {get; set; }
 }
 
 [System.Serializable]
@@ -99,6 +125,7 @@ public class PlayerState
 {
 	public string currentRoom { get; set; }
 	public ItemRef[] inventory { get; set; }
+	public Dictionary<string, Condition> conditions { get; set; }
 }
 
 [System.Serializable]

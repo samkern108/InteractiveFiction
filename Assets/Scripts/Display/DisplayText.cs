@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class DisplayText : MonoBehaviour {
 
 	public static Text displayText;
-	public Color textColor;
+	public static Color textColor;
 
 	void Start()
 	{

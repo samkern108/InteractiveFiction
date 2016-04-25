@@ -2,14 +2,42 @@
 	"name": "lamp",
 	"nameFancy": "Lamp",
 	"compass": true,
-	"midpoint": {x:0, y:-50},
+	"midpoint": {
+		"x": 0,
+		"y": -50
+	},
+	"conditions": {
+		"on": {
+			"name": "on",
+			"value": 0,
+			"increase": 0
+		}
+	},
 	"bounds": [{
 		"radius": 5,
-		"text": "Lamp 2.",
+		"textConditions": [{
+			"name": "on",
+			"intervals": [{
+				"start": 1,
+				"text": "The lamp is off."
+			}, {
+				"start": 0,
+				"text": "The lamp is on."
+			}]
+		}],
 		"passable": false
 	}, {
 		"radius": 20,
-		"text": "Lamp 1.",
+		"textConditions": [{
+			"name": "on",
+			"intervals": [{
+				"start": 1,
+				"text": "The lamp is on."
+			}, {
+				"start": 0,
+				"text": "The lamp is off."
+			}]
+		}],
 		"passable": true
 	}]
 }

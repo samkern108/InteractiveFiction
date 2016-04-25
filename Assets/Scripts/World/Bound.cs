@@ -41,24 +41,49 @@ public class Bound : MonoBehaviour {
 
 	private void Enter()
 	{
-		DisplayText.SetDisplayText (info.text);
-
-		if (info.prompt != null) {
-			PromptPrefab.DisplayPrompt (info.prompt);
-		}
+		DisplayText.SetDisplayText (DetermineTextToDisplay());
 
 		if(jukebox != null) {
 			jukebox.Play ();
 		}
 	}
 
+	private string DetermineTextToDisplay()
+	{
+		string text = "";
+		float val = 0;
+
+		Debug.Log (info.textConditions);
+
+		foreach (TextCondition tc in info.textConditions) {
+			val = GetConditionValue (tc.name);
+			foreach (TextInterval i in tc.intervals) {
+				if (val >= i.start) {
+					text += " " + i.text;
+					if (i.prompt != null) {
+						PromptPrefab.DisplayPrompt (i.prompt);
+					}
+					break;
+				}	
+			}
+		}
+
+		return text;
+	}
+
+	private float GetConditionValue(string name)
+	{
+		if (myFixture.info.conditions.ContainsKey (name))
+			return myFixture.info.conditions [name].value;
+		else
+			return DataStore.GetConditionValue (name);
+	}
+
 	private void Exit()
 	{
 		DisplayText.ClearDisplayText ();
 
-		if (info.prompt != null) {
-			PromptPrefab.HidePrompt ();
-		}
+		PromptPrefab.HidePrompt ();
 
 		if(jukebox != null) {
 			jukebox.StopPlaying ();

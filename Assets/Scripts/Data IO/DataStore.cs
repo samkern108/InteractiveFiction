@@ -48,4 +48,31 @@ public class DataStore {
 	{
 		npcs.Add (r.name, r);
 	}
+
+	public static float GetConditionValue(string name)
+	{
+		switch (name) {
+		case "temp":
+			return worldState.weather.temperature;
+			break;
+		case "weather":
+			//worldState.weather.weatherType;
+			return 0;
+			break;
+		case "time":
+			return 0;
+			break;
+		default:
+			if (playerState.conditions.ContainsKey (name))
+				return playerState.conditions [name].value;
+			break;
+		}
+		Debug.LogError ("Error: Condition With Name " + name + " Not Found.");
+		return 0;
+	}
+
+	public static void SetPlayerCondition(string name, float value)
+	{
+		playerState.conditions [name].value = value;
+	}
 }

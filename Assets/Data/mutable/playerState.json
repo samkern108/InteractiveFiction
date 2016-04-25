@@ -1,1 +1,13 @@
-{"currentRoom":"bedroom","inventory":[]}
+{
+	"currentRoom": "bedroom",
+	"inventory": [],
+	"clothing": {
+		"boots": 1,
+		"hat": 0,
+		"jacket": 1
+	},
+	"conditions": {
+		"hunger": { "name":"hunger", "value": 0, "increasing":"10"},
+		"moisture": { "name":"moisture", "value": 0, "increasing":"0"}
+	}
+}

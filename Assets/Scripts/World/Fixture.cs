@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Fixture : MonoBehaviour {
 
-	private FixtureInfo info;
+	public FixtureInfo info;
 	private List<Bound> bounds;
 	public GameObject boundPrefab;
 	public Dictionary<string, Jukebox> jukeboxes;

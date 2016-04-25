@@ -12,16 +12,82 @@
 		"volume": 40,
 		"auto_play": false
 	}],
+	"conditions": {
+		"boots": {
+			"name": "boots",
+			"value": 0,
+			"increase": 0
+		}
+	},
 	"bounds": [{
-		"radius": 10,
-		"text": "My boots are drying by the crackling logs. I should put the soup on before I get too hungry.",
-		"passable": false
+		"radius": 20,
+		"textConditions": [{
+			"name": "temp",
+			"intervals": [{
+				"start": 90,
+				"text": "It's too warm to have a fire..."
+			}, {
+				"start": 60,
+				"text": "The fire feels great."
+			}, {
+				"start": 20,
+				"text": "It's cold. I should get closer to the fire."
+			}, {
+				"start": 0,
+				"text": "How do I even still have hands."
+			}]
+		}, {
+			"name": "hunger",
+			"intervals": [{
+				"start": 80,
+				"text": "I'm starving! I should put the soup on."
+			}]
+		}, {
+			"name": "moisture",
+			"intervals": [{
+				"start": 70,
+				"text": "If I leave my boots by the fire to dry, they'll be nice and warm when I come back.",
+				"prompt": {
+					"text": "Place boots by fire.",
+					"button": "x",
+					"condition": {
+						"name": "boots",
+						"increase": 10
+					}
+				}
+			}]
+		}, {
+			"name": "boots",
+			"intervals": [{
+				"start": 80,
+				"text": "The boots are dry. I should grab them before I go back outside.",
+				"prompt": {
+					"text": "Place boots by fire.",
+					"button": "x",
+					"condition": {
+						"name": "boots",
+						"value": 0,
+						"increase": 0
+					}
+				}
+			}, {
+				"start": 20,
+				"text": "The boots aren't quite dry yet."
+			}]
+		}],
+		"passable": true
 	}, {
 		"radius": 50,
 		"audio": {
 			"jukebox": "fireplace"
 		},
-		"text": "The fireplace is crackling heartily.",
+		"textConditions": [{
+			"name": "temp",
+			"intervals": [{
+				"start": 0,
+				"text": "The fireplace is crackling heartily."
+			}]
+		}],
 		"passable": true
 	}]
 }

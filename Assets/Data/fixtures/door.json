@@ -6,17 +6,52 @@
 		"x": 100,
 		"y": 100
 	},
+	"conditions": {
+		"locked": {
+			"name": "locked",
+			"value": 0,
+			"increase": 0
+		}
+	},
 	"bounds": [{
-		"radius": 5,
-		"text": "The handle of the door is frigid. It must be cold out there.",
-		"prompt": {
-			"button": "x",
-			"text": "Press X To Open Door"
-		},
-		"passable": false
-	}, {
 		"radius": 20,
-		"text": "The door is creaking from the buffeting winds.",
+		"textConditions": [{
+			"name": "temp",
+			"intervals": [{
+				"start": 90,
+				"text": "I can feel heat radiating from the door. It must be baking outside.",
+				"prompt": {
+					"text": "Go Outside.",
+					"button": "x",
+					"exit": {
+						"room": "porch",
+						"entrance": "door"
+					}
+				}
+			}, {
+				"start": 60,
+				"text": "A nice day to go outside.",
+				"prompt": {
+					"text": "Go Outside.",
+					"button": "x",
+					"exit": {
+						"room": "porch",
+						"entrance": "door"
+					}
+				}
+			}, {
+				"start": 20,
+				"text": "The handle feels chilly... I don't even want to go out.",
+				"prompt": {
+					"text": "Go Outside.",
+					"button": "x",
+					"exit": {
+						"room": "porch",
+						"entrance": "door"
+					}
+				}
+			}]
+		}],
 		"passable": true
 	}]
 }
