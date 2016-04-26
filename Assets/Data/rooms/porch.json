@@ -1,0 +1,12 @@
+{
+	"name": "porch",
+	"nameFancy": "Front Porch",
+	"bounds": [
+		{x:100, y:100},
+		{x:-100, y:100},
+		{x:-100, y:-100},
+		{x:100, y:-100},
+	],
+	"fixtures": ["door"],
+	"items": []
+}

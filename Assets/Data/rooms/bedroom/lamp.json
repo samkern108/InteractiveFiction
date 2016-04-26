@@ -19,10 +19,10 @@
 			"name": "on",
 			"intervals": [{
 				"start": 1,
-				"text": "The lamp is off."
+				"text": "The lamp is on."
 			}, {
 				"start": 0,
-				"text": "The lamp is on."
+				"text": "The lamp is off."
 			}]
 		}],
 		"passable": false

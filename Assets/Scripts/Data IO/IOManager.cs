@@ -51,15 +51,15 @@ public static class IOManager
 		Room newobject = JsonConvert.DeserializeObject<Room>(data);
 
 		foreach(string fref in newobject.fixtures) {
-			newobject.fixturesInfo.Add(LoadFixture(fref));
+			newobject.fixturesInfo.Add(LoadFixture(filename, fref));
 		}
 
 		return newobject;
 	}
 
-	private static FixtureInfo LoadFixture(string filename)
+	private static FixtureInfo LoadFixture(string roomName, string filename)
 	{
-		string data = ReadFromFile ("/fixtures/"+filename);
+		string data = ReadFromFile ("/rooms/" + roomName + "/"+filename);
 		
 		FixtureInfo newobject = JsonConvert.DeserializeObject<FixtureInfo>(data);
 		return newobject;

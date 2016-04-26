@@ -49,6 +49,15 @@ public class DataStore {
 		npcs.Add (r.name, r);
 	}
 
+	/*
+	 * Right now, the prompt includes
+	 * name: name of condition
+	 * value_eq: set the value
+	 * value_inc: increase the value
+	 * increase: increase over time
+	 */
+
+
 	public static float GetConditionValue(string name)
 	{
 		switch (name) {
@@ -71,8 +80,14 @@ public class DataStore {
 		return 0;
 	}
 
-	public static void SetPlayerCondition(string name, float value)
+	//I still don't really know what to do with increase, but we'll figure it out
+	public static void IncConditionValue(string name, float value_inc, float increase)
 	{
-		playerState.conditions [name].value = value;
+		playerState.conditions [name].value += value_inc;
+	}
+
+	public static void SetConditionValue(string name, float value_eq, float increase)
+	{
+		playerState.conditions [name].value = value_eq;
 	}
 }

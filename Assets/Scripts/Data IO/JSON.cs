@@ -89,7 +89,7 @@ public class TextInterval
 [System.Serializable]
 public class Exit
 {
-	public string endRoom { get; set; }
+	public string end_room { get; set; }
 	public string entrance { get; set; }
 	public string flag { get; set; }
 }

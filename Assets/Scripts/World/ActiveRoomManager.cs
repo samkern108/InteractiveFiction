@@ -23,6 +23,22 @@ public class ActiveRoomManager : MonoBehaviour {
 		self = this;
 	}
 
+	public void ExitToRoom (string endRoom, string entrance)
+	{
+		Debug.Log (endRoom);
+		//TODO gotta move the player as well
+		ClearCurrentRoom();
+		SetActiveRoom (IOManager.LoadRoom (endRoom));
+	}
+
+	private void ClearCurrentRoom()
+	{
+		Compass.instance.ClearCompass ();
+		for (int i = 0; i < fixtures.Count; i++) {
+			Destroy (fixtures[i].gameObject);
+		}
+	}
+
 	public void SetActiveRoom(Room room)
 	{
 		Fixture fixture;
@@ -40,7 +56,7 @@ public class ActiveRoomManager : MonoBehaviour {
 		}
 		AddAllCompassFixtures ();
 		PolygonTools.InitializeRoom (room.bounds);
-		InitializePolygonCollider ();
+		//InitializePolygonCollider ();
 	}
 
 	/**

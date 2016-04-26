@@ -23,7 +23,10 @@ public class Compass : MonoBehaviour {
 
 	public void ClearCompass()
 	{
-		textList = new List<CompassTextObject> ();
+		for (int i = 0; i < textList.Count; i++) {
+			Destroy (textList[i].gameObject);
+		}
+		textList.Clear ();
 	}
 
 	public void LoadCompassObjects(FixtureInfo[] f)

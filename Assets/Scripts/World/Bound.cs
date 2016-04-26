@@ -53,15 +53,13 @@ public class Bound : MonoBehaviour {
 		string text = "";
 		float val = 0;
 
-		Debug.Log (info.textConditions);
-
 		foreach (TextCondition tc in info.textConditions) {
 			val = GetConditionValue (tc.name);
 			foreach (TextInterval i in tc.intervals) {
 				if (val >= i.start) {
 					text += " " + i.text;
 					if (i.prompt != null) {
-						PromptPrefab.DisplayPrompt (i.prompt);
+						PromptPrefab.DisplayPrompt (i.prompt, this);
 					}
 					break;
 				}	

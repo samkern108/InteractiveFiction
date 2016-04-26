@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	const float speed = 10f;
+	const float speed = 20f;
 	const float turnSpeed = 2f;
 	float angle = 0;
 	const float twoPI = Mathf.PI * 2;

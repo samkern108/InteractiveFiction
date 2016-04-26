@@ -1,0 +1,57 @@
+{
+	"name": "door",
+	"nameFancy": "Door",
+	"compass": true,
+	"midpoint": {
+		"x": 100,
+		"y": 100
+	},
+	"conditions": {
+		"locked": {
+			"name": "locked",
+			"value": 0,
+			"increase": 0
+		}
+	},
+	"bounds": [{
+		"radius": 20,
+		"textConditions": [{
+			"name": "temp",
+			"intervals": [{
+				"start": 90,
+				"text": "I can feel heat radiating from the door. It must be baking outside.",
+				"prompt": {
+					"text": "Go Outside.",
+					"button": "x",
+					"exit": {
+						"end_room": "porch",
+						"entrance": "door"
+					}
+				}
+			}, {
+				"start": 60,
+				"text": "A nice day to go outside.",
+				"prompt": {
+					"text": "Go Outside.",
+					"button": "x",
+					"exit": {
+						"end_room": "porch",
+						"entrance": "door"
+					}
+				}
+			}, {
+				"start": 20,
+				"text": "The handle feels chilly... I don't even want to go out.",
+				"prompt": {
+					"text": "Go Outside.",
+					"button": "x",
+					"exit": {
+						"end_room": "porch",
+						"entrance": "door"
+					}
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}
