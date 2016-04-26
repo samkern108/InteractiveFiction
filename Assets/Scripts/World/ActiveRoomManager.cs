@@ -64,9 +64,10 @@ public class ActiveRoomManager : MonoBehaviour {
 	 */
 	public void AddAllCompassFixtures()
 	{
-		foreach(Fixture f in fixtures) {
+		/*foreach(Fixture f in fixtures) {
 			Compass.instance.NewTextObject (f.name(), f.midpoint());
-		}
+		}*/
+		Compass.instance.LoadCompassObjects (fixtures);
 	}
 
 	public void DistanceFromWall(Position pos)

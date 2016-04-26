@@ -27,25 +27,21 @@ public class Compass : MonoBehaviour {
 			Destroy (textList[i].gameObject);
 		}
 		textList.Clear ();
+		DrawObjects (PlayerMovement.position);
 	}
 
-	public void LoadCompassObjects(FixtureInfo[] f)
-	{
-		ClearCompass ();
-		for(int i = 0; i < f.Length; i++)	
-			NewTextObject (f[i].nameFancy, f[i].midpoint);
-	}
-
-	public void LoadCompassObjects(List<FixtureInfo> f)
+	public void LoadCompassObjects(List<Fixture> f)
 	{
 		ClearCompass ();
 		for(int i = 0; i < f.Count; i++)	
-			NewTextObject (f[i].nameFancy, f[i].midpoint);
+			NewTextObject (f[i].info.nameFancy, f[i].info.midpoint);
+		DrawObjects (PlayerMovement.position);
 	}
 
 	public void AddCompassObject(FixtureInfo f)
 	{
 		NewTextObject (f.nameFancy, f.midpoint);
+		DrawObjects (PlayerMovement.position);
 	}
 
 	private void DrawObjects(Position player) {
@@ -76,7 +72,7 @@ public class Compass : MonoBehaviour {
 		}
 	}
 
-	public void NewTextObject(string text, Vector2 midpoint) {
+	private void NewTextObject(string text, Vector2 midpoint) {
 		CompassTextObject t = Instantiate (compassTextPrefab).GetComponent ("CompassTextObject") as CompassTextObject;
 		t.gameObject.transform.SetParent (this.gameObject.transform, true);
 		t.gameObject.transform.localPosition = new Vector2 (0,15);

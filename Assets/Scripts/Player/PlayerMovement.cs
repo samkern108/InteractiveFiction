@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 	const float twoPI = Mathf.PI * 2;
 
 	Vector2 moveVector;
-	private Position position;
+	public static Position position;
 
 	bool sendNotification = false;
 	Vector2 newPosition;

@@ -17,7 +17,6 @@ public class PromptPrefab : MonoBehaviour {
 	void Update()
 	{
 		if (promptText.enabled && Input.GetButtonDown (prompt.button)) {
-			Debug.Log ("HELLO");
 			TriggerPrompt ();
 			promptText.enabled = false;
 		}
