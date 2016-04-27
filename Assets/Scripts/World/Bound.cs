@@ -54,7 +54,7 @@ public class Bound : MonoBehaviour {
 		float val = 0;
 
 		foreach (TextCondition tc in info.textConditions) {
-			val = GetConditionValue (tc.name);
+			val = DataStore.GetConditionValue (tc.name);
 			foreach (TextInterval i in tc.intervals) {
 				if (val >= i.start) {
 					text += " " + i.text;
@@ -67,14 +67,6 @@ public class Bound : MonoBehaviour {
 		}
 
 		return text;
-	}
-
-	private float GetConditionValue(string name)
-	{
-		if (myFixture.info.conditions.ContainsKey (name))
-			return myFixture.info.conditions [name].value;
-		else
-			return DataStore.GetConditionValue (name);
 	}
 
 	private void Exit()

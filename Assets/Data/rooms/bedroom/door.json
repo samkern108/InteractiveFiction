@@ -16,7 +16,7 @@
 	"bounds": [{
 		"radius": 20,
 		"textConditions": [{
-			"name": "temp",
+			"name": "warmth",
 			"intervals": [{
 				"start": 90,
 				"text": "I can feel heat radiating from the door. It must be baking outside.",

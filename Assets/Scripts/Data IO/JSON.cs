@@ -51,6 +51,7 @@ public class Condition
 {
 	public string name { get; set; }
 	public float value { get; set; }
+	public float inc { get; set; }
 	public float increase { get; set; }
 }
 

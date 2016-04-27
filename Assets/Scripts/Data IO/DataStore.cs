@@ -12,6 +12,9 @@ public class Flag {
 
 public class DataStore {
 
+	public static Dictionary<string, Condition> activeConditions;
+	public static List<string> increasingConditions;
+
 	public static PlayerState playerState;
 	public static RoomStates roomStates;
 	public static WorldState worldState;
@@ -25,6 +28,8 @@ public class DataStore {
 
 	public DataStore()
 	{
+		activeConditions = new Dictionary<string, Condition> ();
+
 		roomStates = IOManager.LoadRoomStates ();
 		playerState = IOManager.LoadPlayerState ();
 		worldState = IOManager.LoadWorldState ();
@@ -32,6 +37,10 @@ public class DataStore {
 
 		WorldClock.SetDate (worldState.clock);
 		WeatherSystem.SetWeather (worldState.weather);
+
+		foreach(Condition c in playerState.conditions.Values) {
+			DataStore.AddCondition (c);
+		}
 	}
 
 	public void AddRoomToMemory(Room r)
@@ -57,37 +66,67 @@ public class DataStore {
 	 * increase: increase over time
 	 */
 
+	public static void RemoveConditions(Dictionary<string, Condition> names)
+	{
+		foreach (string c in names.Keys) {
+			activeConditions.Remove (c);	
+		}
+	}
+
+	public static void RemoveCondition(string name)
+	{
+		activeConditions.Remove (name);
+	}
+
+	public static void AddCondition(Condition c)
+	{
+		activeConditions.Add (c.name, c);
+	}
+
+	public static void AddConditions(List<Condition> cs)
+	{
+		foreach (Condition c in cs) {
+			activeConditions.Add (c.name, c);	
+		}
+	}
 
 	public static float GetConditionValue(string name)
 	{
-		switch (name) {
-		case "temp":
-			return worldState.weather.temperature;
-			break;
-		case "weather":
-			//worldState.weather.weatherType;
+		if (activeConditions.ContainsKey (name))
+			return activeConditions [name].value;
+		else {
+			Debug.LogError ("Condition " + name + " is unknown; cannot get.");
 			return 0;
-			break;
-		case "time":
-			return 0;
-			break;
-		default:
-			if (playerState.conditions.ContainsKey (name))
-				return playerState.conditions [name].value;
-			break;
 		}
-		Debug.LogError ("Error: Condition With Name " + name + " Not Found.");
-		return 0;
 	}
 
 	//I still don't really know what to do with increase, but we'll figure it out
-	public static void IncConditionValue(string name, float value_inc, float increase)
+	public static void IncConditionValue(string name, float inc)
 	{
-		playerState.conditions [name].value += value_inc;
+		if (activeConditions.ContainsKey (name)) {
+			activeConditions [name].value += inc;
+		}
+		else {
+			Debug.LogError ("Condition " + name + " is unknown; cannot inc.");
+		}
 	}
 
-	public static void SetConditionValue(string name, float value_eq, float increase)
+	public static void SetConditionValue(string name, float value_eq)
 	{
-		playerState.conditions [name].value = value_eq;
+		if (activeConditions.ContainsKey (name)) {
+			activeConditions [name].value = value_eq;
+		} else {
+			Debug.LogError ("Condition " + name + " is unknown; cannot set.");
+		}
+	}
+
+	public static void SetConditionIncrease(string name, float increase)
+	{
+		activeConditions [name].increase = increase;
+		if (increase == 0) {
+			increasingConditions.Remove (name);
+		} else if(!increasingConditions.Contains(name)) {
+			increasingConditions.Add (name);
+		}
 	}
 }

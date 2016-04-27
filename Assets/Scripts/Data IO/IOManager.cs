@@ -62,6 +62,12 @@ public static class IOManager
 		string data = ReadFromFile ("/rooms/" + roomName + "/"+filename);
 		
 		FixtureInfo newobject = JsonConvert.DeserializeObject<FixtureInfo>(data);
+
+		foreach(Condition c in newobject.conditions.Values)
+		{
+			DataStore.activeConditions.Add (c.name, c);
+		}
+
 		return newobject;
 	}
 

@@ -29,7 +29,15 @@ public class PromptPrefab : MonoBehaviour {
 			ActiveRoomManager.self.ExitToRoom (prompt.exit.end_room, prompt.exit.entrance);
 		}
 		if (prompt.condition != null) {
-			DataStore.SetConditionValue (prompt.condition.name, prompt.condition.value, prompt.condition.increase);
+			if (prompt.condition.value != null) {
+				DataStore.SetConditionValue (prompt.condition.name, prompt.condition.value);
+			}
+			if (prompt.condition.inc != null) {
+				DataStore.IncConditionValue (prompt.condition.name, prompt.condition.inc);
+			}
+			if (prompt.condition.increase != null) {
+				DataStore.SetConditionIncrease (prompt.condition.name, prompt.condition.increase);
+			}
 		}
 	}
 

@@ -22,7 +22,7 @@
 	"bounds": [{
 		"radius": 20,
 		"textConditions": [{
-			"name": "temp",
+			"name": "warmth",
 			"intervals": [{
 				"start": 90,
 				"text": "It's too warm to have a fire..."
@@ -82,7 +82,7 @@
 			"jukebox": "fireplace"
 		},
 		"textConditions": [{
-			"name": "temp",
+			"name": "warmth",
 			"intervals": [{
 				"start": 0,
 				"text": "The fireplace is crackling heartily."

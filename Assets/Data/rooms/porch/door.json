@@ -16,7 +16,7 @@
 	"bounds": [{
 		"radius": 20,
 		"textConditions": [{
-			"name": "temp",
+			"name": "warmth",
 			"intervals": [{
 				"start": 90,
 				"text": "It's too warm out here. I'd like to go back inside.",

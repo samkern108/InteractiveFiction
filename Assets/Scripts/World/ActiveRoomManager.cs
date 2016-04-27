@@ -18,7 +18,7 @@ public class ActiveRoomManager : MonoBehaviour {
 		AddAllCompassFixtures ();
 	}
 
-	void Start()
+	void Awake()
 	{
 		self = this;
 	}
@@ -35,6 +35,7 @@ public class ActiveRoomManager : MonoBehaviour {
 	{
 		Compass.instance.ClearCompass ();
 		for (int i = 0; i < fixtures.Count; i++) {
+			DataStore.RemoveConditions (fixtures [i].info.conditions);
 			Destroy (fixtures[i].gameObject);
 		}
 	}
