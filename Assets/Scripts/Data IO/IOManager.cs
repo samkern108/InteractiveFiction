@@ -65,7 +65,7 @@ public static class IOManager
 
 		foreach(Condition c in newobject.conditions.Values)
 		{
-			DataStore.activeConditions.Add (c.name, c);
+			DataStore.AddCondition (c);
 		}
 
 		return newobject;

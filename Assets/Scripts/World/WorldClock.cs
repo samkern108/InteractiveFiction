@@ -76,7 +76,7 @@ public class WorldClock : MonoBehaviour {
 	
 									  //s,  m,  h,  d,  m
 	byte[] timePerInterval = new byte[] {60, 60, 24, 28, 12};
-	float updateAmount = 1000f;
+	float updateAmount = 4f;
 	public static float[] dateArray;
 
 	public Season[] seasonOfMonth = new Season[] 

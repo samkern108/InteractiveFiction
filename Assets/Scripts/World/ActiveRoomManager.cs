@@ -13,11 +13,6 @@ public class ActiveRoomManager : MonoBehaviour {
 
 	public List<Fixture> fixtures;
 
-	public void ForceUpdate()
-	{
-		AddAllCompassFixtures ();
-	}
-
 	void Awake()
 	{
 		self = this;
@@ -76,16 +71,24 @@ public class ActiveRoomManager : MonoBehaviour {
 		Background.instance.CloseToWallTint (10f);
 	}
 
+	public void ForceUpdate()
+	{
+		AddAllCompassFixtures ();
+		if(Bound.activeBound != null)
+			Bound.activeBound.UpdateText ();
+	}
+
+	public void WorldTick()
+	{
+		Bound.activeBound.UpdateText ();
+	}
+
 	/**
 	 * Returns true if the player is inside the room; false otherwise.
 	 */
 	public bool PlayerInsideRoom(Vector2 playerPosition)
 	{
 		return PolygonTools.PointInPolygon (playerPosition);
-	}
-
-	public void worldTick(TimeOfDay obj)
-	{
 	}
 
 	private void InitializePolygonCollider() {

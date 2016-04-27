@@ -12,7 +12,7 @@ public class Flag {
 
 public class DataStore {
 
-	public static Dictionary<string, Condition> activeConditions;
+	private static Dictionary<string, Condition> activeConditions;
 	public static List<string> increasingConditions;
 
 	public static PlayerState playerState;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Bound : MonoBehaviour {
 
+	public static Bound activeBound;
 	private BoundInfo info;
 	private Jukebox jukebox;
 	private Fixture myFixture;
@@ -42,6 +43,7 @@ public class Bound : MonoBehaviour {
 	private void Enter()
 	{
 		DisplayText.SetDisplayText (DetermineTextToDisplay());
+		activeBound = this;
 
 		if(jukebox != null) {
 			jukebox.Play ();
@@ -72,6 +74,7 @@ public class Bound : MonoBehaviour {
 	private void Exit()
 	{
 		DisplayText.ClearDisplayText ();
+		activeBound = null;
 
 		PromptPrefab.HidePrompt ();
 
@@ -106,5 +109,14 @@ public class Bound : MonoBehaviour {
 	public void ToggleVisuals()
 	{
 		GetComponent <SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+	}
+
+	/*
+	 * This is called by ActiveRoomManager by using activeBound to avoid having EVERY bound
+	 * get a forceupdate on every world tick.
+	 */
+	public void UpdateText()
+	{
+		DisplayText.SetDisplayText (DetermineTextToDisplay());
 	}
 }
