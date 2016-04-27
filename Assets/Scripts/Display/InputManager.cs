@@ -2,13 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UIHandler : MonoBehaviour {
+public class InputWrapper: MonoBehaviour {
 
 	public GameObject menu;
 	public GameObject inventory;
-	public Text clockText;
-	public Text seasonText;
-	public Text weatherText;
+	//public Text clockText;
+	//public Text seasonText;
+	//public Text weatherText;
 
 	void Update () {
 		if (Input.GetKeyDown("escape")) {
@@ -19,7 +19,7 @@ public class UIHandler : MonoBehaviour {
 		}
 	}
 
-	public void WorldTick(Clock time) {
+	/*public void WorldTick(Clock time) {
 		clockText.text = time + "";
 	}
 
@@ -29,5 +29,5 @@ public class UIHandler : MonoBehaviour {
 
 	public void WeatherChange(Weather weather) {
 		weatherText.text = DataStore.worldConstants.seasonConstants[weather.weatherType];
-	}
+	}*/
 }

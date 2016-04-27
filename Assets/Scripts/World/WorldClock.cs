@@ -163,8 +163,7 @@ public class WorldClock : MonoBehaviour {
 	private void updateTimeOfDay()
 	{
 		clock.timeOfDay = timeOfDayForHour[hour()];
-		//UIManager.SetClock (DataStore.worldConstants.timeConstants[clock.timeOfDay.ToString()]);
-		//Debug.Log (DataStore.worldConstants.timeConstants[clock.timeOfDay.ToString()]);
+		UIManager.SetClock (DataStore.worldConstants.timeConstants[clock.timeOfDay.ToString()]);
 	}
 
 	private void updateSeason()
