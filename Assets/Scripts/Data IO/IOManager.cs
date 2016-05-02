@@ -25,12 +25,17 @@ public static class IOManager
 		return JsonConvert.DeserializeObject<WorldConstants> (data);
 	}
 
-	//Not working
-	/*public static void LoadFlags()
+	public static Dictionary<string, Room> LoadAllRooms()
 	{
-		string data = ReadFromFile ("/mutable/flags");
-		return JsonConvert.DeserializeObject<Flag>(data);
-	}*/
+		string data = ReadFromFile ("/rooms/roomslist");
+		string[] rooms = JsonConvert.DeserializeObject <string[]>(data);
+		Dictionary<string, Room> allRooms = new Dictionary<string, Room> ();
+
+		foreach(string s in rooms) {
+			allRooms.Add (s, LoadRoom(s));
+		}
+		return allRooms;
+	}
 
 	public static PlayerState LoadPlayerState()
 	{
@@ -63,6 +68,7 @@ public static class IOManager
 		
 		FixtureInfo newobject = JsonConvert.DeserializeObject<FixtureInfo>(data);
 
+		if(newobject.conditions != null)
 		foreach(Condition c in newobject.conditions.Values)
 		{
 			DataStore.AddCondition (c);

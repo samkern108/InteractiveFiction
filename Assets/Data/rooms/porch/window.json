@@ -1,0 +1,46 @@
+{
+	"name": "window",
+	"nameFancy": "Window",
+	"compass": true,
+	"midpoint": {
+		"x": 0,
+		"y": 50
+	},
+	"conditions": {
+		"open_window": {
+			"name": "open_window",
+			"value": 0,
+			"increase": 0
+		}
+	},
+	"bounds": [{
+		"radius": 20,
+		"textConditions": [{
+			"name": "open_window",
+			"intervals": [{
+				"start": 1,
+				"text": "To kitchen.",
+				"prompt": {
+					"text": "To kitchen.",
+					"button": "x",
+					"exit": {
+						"end_room": "kitchen",
+						"entrance": "window"
+					}
+				}
+			},{
+				"start": 0,
+				"text": "Open Window.",
+				"prompt": {
+					"text": "Open Window.",
+					"button": "x",
+					"condition":{
+						"name":"open_window",
+						"value":1
+					}
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

@@ -7,6 +7,6 @@
 		{x:-100, y:-100},
 		{x:100, y:-100},
 	],
-	"fixtures": ["fireplace","lamp","door"],
+	"fixtures": ["bed","archway"],
 	"items": []
 }

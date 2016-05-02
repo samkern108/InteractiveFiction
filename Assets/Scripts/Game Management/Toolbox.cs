@@ -40,7 +40,7 @@ public struct Position
 	}
 }
 
-public enum Button
+public enum Key
 {
 	a, s, d, f
 }

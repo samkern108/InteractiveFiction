@@ -3,7 +3,7 @@
 	"nameFancy": "Fireplace",
 	"compass": true,
 	"midpoint": {
-		"x": 50,
+		"x": 100,
 		"y": 10
 	},
 	"jukeboxes": [{
@@ -15,8 +15,13 @@
 	"conditions": {
 		"boots": {
 			"name": "boots",
-			"value": 0,
+			"value": -1,
 			"increase": 0
+		},
+		"logs": {
+			"name": "logs",
+			"value": 2,
+			"increase": "-.5"
 		}
 	},
 	"bounds": [{
@@ -34,7 +39,7 @@
 				"text": "It's cold. I should get closer to the fire."
 			}, {
 				"start": 0,
-				"text": "How do I even still have hands."
+				"text": "Well, I have frostbite. Now I have to cut my hands off."
 			}]
 		}, {
 			"name": "hunger",
@@ -62,17 +67,67 @@
 				"start": 80,
 				"text": "The boots are dry. I should grab them before I go back outside.",
 				"prompt": {
-					"text": "Place boots by fire.",
+					"text": "Grab boots.",
 					"button": "x",
 					"condition": {
 						"name": "boots",
-						"value_eq": 0,
+						"value": -1,
 						"increase": 0
 					}
 				}
 			}, {
-				"start": 20,
-				"text": "The boots aren't quite dry yet."
+				"start": 0,
+				"text": "The boots aren't quite dry yet. I'll come back in a bit."
+			}, {
+				"name": "logs",
+				"intervals": [{
+					"start": 8,
+					"text": "Alright... that's enough logs. It should burn for quite a while."
+				}, {
+					"start": 5,
+					"text": "It has plenty of logs. It should burn for quite a while.",
+					"prompt": {
+						"text": "Put on another for good measure.",
+						"button": "x",
+						"condition": {
+							"name": "logs",
+							"inc": 1
+						}
+					}
+				}, {
+					"start": 3,
+					"text": "Might as well put on a few more logs.",
+					"prompt": {
+						"text": "Put on another log.",
+						"button": "x",
+						"condition": {
+							"name": "logs",
+							"inc": 1
+						}
+					}
+				}, {
+					"start": 1,
+					"text": "Could probably use a few more logs.",
+					"prompt": {
+						"text": "Put on a log.",
+						"button": "x",
+						"condition": {
+							"name": "logs",
+							"inc": 1
+						}
+					}
+				}, {
+					"start": 0,
+					"text": "The fire has completely burned out.",
+					"prompt": {
+						"text": "Put on a log.",
+						"button": "x",
+						"condition": {
+							"name": "logs",
+							"value": 1
+						}
+					}
+				}]
 			}]
 		}],
 		"passable": true

@@ -1,12 +1,12 @@
 {
-	"name": "livingroom",
-	"nameFancy": "Living Room",
+	"name": "kitchen",
+	"nameFancy": "Kitchen",
 	"bounds": [
 		{x:100, y:100},
 		{x:-100, y:100},
 		{x:-100, y:-100},
 		{x:100, y:-100},
 	],
-	"fixtures": ["fireplace","lamp","door", "archway"],
+	"fixtures": ["window"],
 	"items": []
 }

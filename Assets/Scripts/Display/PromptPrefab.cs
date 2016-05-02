@@ -16,7 +16,7 @@ public class PromptPrefab : MonoBehaviour {
 
 	void Update()
 	{
-		if (promptText.enabled && Input.GetButtonDown (prompt.button)) {
+		if (promptText.enabled && (prompt.button == null || Input.GetButtonDown (prompt.button))) {
 			TriggerPrompt ();
 			promptText.enabled = false;
 		}
@@ -44,7 +44,11 @@ public class PromptPrefab : MonoBehaviour {
 	public static void DisplayPrompt(Prompt p, Bound f)
 	{
 		prompt = p;
-		promptText.text = p.button.ToUpper() + " - " + p.text.ToUpper();
+		if (p.button != null) {
+			promptText.text = p.button.ToUpper () + " - " + p.text.ToUpper ();
+		} else {
+			promptText.text = p.text.ToUpper ();
+		}
 		promptText.enabled = true;
 		callback = f;
 	}

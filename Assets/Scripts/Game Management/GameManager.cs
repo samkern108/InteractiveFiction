@@ -17,4 +17,9 @@ public class GameManager : MonoBehaviour {
 	{
 		ActiveRoomManager.self.SetActiveRoom(IOManager.LoadRoom (DataStore.playerState.currentRoom));
 	}
+
+	public void WorldTick()
+	{
+		DataStore.IncAllConditions ();
+	}
 }

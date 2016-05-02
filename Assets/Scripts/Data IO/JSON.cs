@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -92,7 +92,7 @@ public class Exit
 {
 	public string end_room { get; set; }
 	public string entrance { get; set; }
-	public string flag { get; set; }
+	public string condition { get; set; }
 }
 
 [System.Serializable]
@@ -101,7 +101,8 @@ public class Prompt
 	public string text { get; set; }
 	public string button { get; set; }
 	public Condition condition { get; set; }
-	public Exit exit {get; set; }
+	public Exit exit { get; set; }
+	public string displaytext { get; set; }
 }
 
 [System.Serializable]

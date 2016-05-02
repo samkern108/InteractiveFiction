@@ -1,12 +1,12 @@
 {
-	"name": "livingroom",
-	"nameFancy": "Living Room",
+	"name": "westofhouse",
+	"nameFancy": "West Of House",
 	"bounds": [
 		{x:100, y:100},
 		{x:-100, y:100},
 		{x:-100, y:-100},
 		{x:100, y:-100},
 	],
-	"fixtures": ["fireplace","lamp","door", "archway"],
+	"fixtures": ["porchpath", "mailbox", "door"],
 	"items": []
 }

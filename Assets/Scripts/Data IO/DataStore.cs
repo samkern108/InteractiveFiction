@@ -2,14 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum FlagType { STRING, INT, BOOL }
-
-public class Flag {
-	public string s;
-	public int i;
-	public bool b;
-}
-
 public class DataStore {
 
 	private static Dictionary<string, Condition> activeConditions;
@@ -22,13 +14,13 @@ public class DataStore {
 	public static Dictionary<string, Room> rooms;
 	public static Dictionary<string, Item> items;
 	public static Dictionary<string, NPC> npcs;
-	public static Dictionary<string, Flag> flags;
 
 	public static WorldConstants worldConstants;
 
 	public DataStore()
 	{
 		activeConditions = new Dictionary<string, Condition> ();
+		increasingConditions = new List<string> ();
 
 		roomStates = IOManager.LoadRoomStates ();
 		playerState = IOManager.LoadPlayerState ();
@@ -80,18 +72,23 @@ public class DataStore {
 
 	public static void AddCondition(Condition c)
 	{
+		Debug.Log ("Adding condition: " + c.name);
 		activeConditions.Add (c.name, c);
+		if (c.increase != 0) {
+			increasingConditions.Add (c.name);
+		}
 	}
 
 	public static void AddConditions(List<Condition> cs)
 	{
 		foreach (Condition c in cs) {
-			activeConditions.Add (c.name, c);	
+			AddCondition (c);
 		}
 	}
 
 	public static float GetConditionValue(string name)
 	{
+		Debug.Log ("Get condition named " + name);
 		if (activeConditions.ContainsKey (name))
 			return activeConditions [name].value;
 		else {
@@ -105,6 +102,8 @@ public class DataStore {
 	{
 		if (activeConditions.ContainsKey (name)) {
 			activeConditions [name].value += inc;
+			Debug.Log ("Send Force Update");
+			NotificationSystem.instance.SendNotification (Notification.ForceUpdate);
 		}
 		else {
 			Debug.LogError ("Condition " + name + " is unknown; cannot inc.");
@@ -115,6 +114,10 @@ public class DataStore {
 	{
 		if (activeConditions.ContainsKey (name)) {
 			activeConditions [name].value = value_eq;
+			Debug.Log ("Send Force Update");
+
+			NotificationSystem.instance.SendNotification (Notification.ForceUpdate);
+
 		} else {
 			Debug.LogError ("Condition " + name + " is unknown; cannot set.");
 		}
@@ -128,5 +131,14 @@ public class DataStore {
 		} else if(!increasingConditions.Contains(name)) {
 			increasingConditions.Add (name);
 		}
+	}
+
+	public static void IncAllConditions()
+	{
+		foreach(string s in increasingConditions)
+		{
+			activeConditions [s].value += activeConditions [s].increase;
+		}
+		NotificationSystem.instance.SendNotification (Notification.ForceUpdate);
 	}
 }

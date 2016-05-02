@@ -1,0 +1,41 @@
+{
+	"name": "archway",
+	"nameFancy": "Archway",
+	"compass": true,
+	"midpoint": {
+		"x": 50,
+		"y": 10
+	},
+	"bounds": [{
+		"radius": 25,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "I'm sleepy.",
+				"prompt": {
+					"text": "To The Bedroom"
+				}
+			}]
+		}],
+		"passable": true
+	}, {
+		"radius": 10,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "",
+				"prompt": {
+					"text": "To The Bedroom",
+					"button": "x",
+					"exit": {
+						"end_room": "bedroom",
+						"entrance": "archway"
+					}
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

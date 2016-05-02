@@ -1,5 +1,5 @@
 {
-	"currentRoom": "bedroom",
+	"currentRoom": "westofhouse",
 	"inventory": [],
 	"clothing": {
 		"boots": 1,
@@ -7,9 +7,9 @@
 		"jacket": 1
 	},
 	"conditions": {
-		"hunger": { "name":"hunger", "value": 0, "increasing":"10"},
-		"moisture": { "name":"moisture", "value": 0, "increasing":"0"},
-		"warmth": { "name":"warmth", "value": 50, "increasing":"0"},
-		"tired": { "name":"tired", "value":0, "increasing":"5"}
+		"hunger": { "name":"hunger", "value": 0, "increase":"1"},
+		"moisture": { "name":"moisture", "value": 0, "increase":"0"},
+		"warmth": { "name":"warmth", "value": 50, "increase":"0"},
+		"tired": { "name":"tired", "value":0, "increase":".5"}
 	}
 }

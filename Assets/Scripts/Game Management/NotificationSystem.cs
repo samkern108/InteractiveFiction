@@ -12,16 +12,19 @@ public class NotificationSystem : MonoBehaviour {
 	}
 
 	public void SendNotification(Notification n) {
+		Debug.Log ("Sending notification: " + n);
 		BroadcastMessage (n.ToString());
 	}
 
 	public void SendNotificationWithInteger(Notification n, int i)
 	{
+		Debug.Log ("Sending notification: " + n);
 		BroadcastMessage (n.ToString(), i);
 	}
 
 	public void SendNotificationWithValue(Notification n, object obj)
 	{
+		Debug.Log ("Sending notification: " + n);
 		BroadcastMessage (n.ToString(), obj);
 	}
 }

@@ -1,0 +1,28 @@
+{
+	"name": "path",
+	"nameFancy": "Path Along Porch",
+	"compass": true,
+	"midpoint": {
+		"x": 100,
+		"y": 100
+	},
+	"bounds": [{
+		"radius": 20,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "To west of house.",
+				"prompt": {
+					"text": "To west of house.",
+					"button": "x",
+					"exit": {
+						"end_room": "westofhouse",
+						"entrance": "pathalongporch"
+					}
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

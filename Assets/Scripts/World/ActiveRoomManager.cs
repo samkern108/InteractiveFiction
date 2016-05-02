@@ -30,7 +30,8 @@ public class ActiveRoomManager : MonoBehaviour {
 	{
 		Compass.instance.ClearCompass ();
 		for (int i = 0; i < fixtures.Count; i++) {
-			DataStore.RemoveConditions (fixtures [i].info.conditions);
+			if(fixtures[i].info.conditions != null)
+				DataStore.RemoveConditions (fixtures [i].info.conditions);
 			Destroy (fixtures[i].gameObject);
 		}
 	}
@@ -71,6 +72,7 @@ public class ActiveRoomManager : MonoBehaviour {
 		Background.instance.CloseToWallTint (10f);
 	}
 
+	//TODO this shouldn't be in ForceUpdate, it should be in GameStart or GameStartLate
 	public void ForceUpdate()
 	{
 		AddAllCompassFixtures ();
@@ -80,7 +82,9 @@ public class ActiveRoomManager : MonoBehaviour {
 
 	public void WorldTick()
 	{
-		Bound.activeBound.UpdateText ();
+		if (Bound.activeBound != null) {
+			Bound.activeBound.UpdateText ();
+		}
 	}
 
 	/**

@@ -1,0 +1,43 @@
+{
+	"name": "door",
+	"nameFancy": "Front Door",
+	"compass": true,
+	"midpoint": {
+		"x": 70,
+		"y": 10
+	},
+	"conditions": {
+		"locked": {
+			"name": "locked",
+			"value": 0,
+			"increase": 0
+		}
+	},
+	"bounds": [{
+		"radius": 20,
+		"textConditions": [{
+			"name": "locked",
+			"intervals": [{
+				"start": 1,
+				"text": "Enter house.",
+				"prompt": {
+					"text": "Enter House.",
+					"button": "x",
+					"exit": {
+						"end_room": "livingroom",
+						"entrance": "door"
+					}
+				}
+			}, {
+				"start": 0,
+				"text": "A majestic wooden door.",
+				"prompt": {
+					"text": "Enter House.",
+					"button": "x",
+					"displaytext": "The door appears to be locked."
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

@@ -1,0 +1,33 @@
+{
+	"name": "bed",
+	"nameFancy": "Bed",
+	"compass": true,
+	"midpoint": {
+		"x": 50,
+		"y": 100
+	},
+	"bounds": [{
+		"radius": 25,
+		"textConditions": [{
+			"name": "tired",
+			"intervals": [{
+				"start": 0,
+				"text": "I'm not ready for bed."
+			}]
+		}],
+		"passable": true
+	}, {
+		"radius": 10,
+		"textConditions": [{
+			"name": "sleepy",
+			"intervals": [{
+				"start": 80,
+				"text": "",
+				"prompt": {
+					"text": "Sleep (NYI)"
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

@@ -18,7 +18,6 @@ public class WeatherParticles : MonoBehaviour {
 	{
 		systems = new ParticleSystem[] { _snow, _mystical, _embers, _fog, _lights, _sparks, _rain, _sand, _leaves };
 		DeactivateAllWeather();
-		PlaySnowEffect (5f, 20, 1.0f, 0.0f, 0);
 	}
 
 	//figure out how to do particle size
