@@ -1,10 +1,10 @@
 {
 	"name": "archway",
-	"nameFancy": "Archway",
+	"nameFancy": "Monolith",
 	"compass": true,
 	"midpoint": {
-		"x": 50,
-		"y": 10
+		"x": 150,
+		"y": -60
 	},
 	"bounds": [{
 		"radius": 25,

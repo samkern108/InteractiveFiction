@@ -1,6 +1,6 @@
 {
 	"name": "fireplace",
-	"nameFancy": "Fireplace",
+	"nameFancy": "Campfire",
 	"compass": true,
 	"midpoint": {
 		"x": 100,
@@ -25,27 +25,27 @@
 		}
 	},
 	"bounds": [{
-		"radius": 20,
+		"radius": 15,
 		"textConditions": [{
 			"name": "warmth",
 			"intervals": [{
 				"start": 90,
-				"text": "It's too warm to have a fire..."
+				"text": "I've left the fire on for too long. I should smother it before I burn down my walls."
 			}, {
-				"start": 60,
-				"text": "The fire feels great."
+				"start": 40,
+				"text": "It's burning low. If I don't find more kindling, it'll be out before the night's done."
 			}, {
-				"start": 20,
-				"text": "It's cold. I should get closer to the fire."
+				"start": 10,
+				"text": "My cold skin is prickling by the heat of the fire. I should get closer."
 			}, {
 				"start": 0,
-				"text": "Well, I have frostbite. Now I have to cut my hands off."
+				"text": "Well, the fire feels great, though it won't do much for my frostbite. Time to cut my hands off. :("
 			}]
 		}, {
 			"name": "hunger",
 			"intervals": [{
 				"start": 80,
-				"text": "I'm starving! I should put the soup on."
+				"text": "While I'm over here, I should put the soup on."
 			}]
 		}, {
 			"name": "moisture",
@@ -132,7 +132,7 @@
 		}],
 		"passable": true
 	}, {
-		"radius": 50,
+		"radius": 30,
 		"audio": {
 			"jukebox": "fireplace"
 		},
@@ -140,7 +140,7 @@
 			"name": "warmth",
 			"intervals": [{
 				"start": 0,
-				"text": "The fireplace is crackling heartily."
+				"text": "The fire is comforting. I can make out no other lights in the surrounding wood."
 			}]
 		}],
 		"passable": true

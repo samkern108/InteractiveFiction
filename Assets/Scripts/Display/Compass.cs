@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -67,7 +67,7 @@ public class Compass : MonoBehaviour {
 				t.myText.transform.localPosition = new Vector3 (textPosition.Map(-90, 90, -280, 280), 0, 0);
 			}
 			else {
-				t.myText.color = new Color(0,0,0,0);
+				t.myText.color = new Color(t.myText.color.r, t.myText.color.g, t.myText.color.b, 0);
 			}
 		}
 	}
