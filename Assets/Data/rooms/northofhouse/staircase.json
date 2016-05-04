@@ -1,0 +1,28 @@
+{
+	"name": "staircase",
+	"nameFancy": "Creaky Staircase",
+	"compass": true,
+	"midpoint": {
+		"x": -100,
+		"y": 100
+	},
+	"bounds": [{
+		"radius": 20,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "Behind House.",
+				"prompt": {
+					"text": "The staircase leads down behind the house.",
+					"button": "x",
+					"exit": {
+						"end_room": "behindhouse",
+						"entrance": "staircase"
+					}
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

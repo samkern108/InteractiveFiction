@@ -7,6 +7,6 @@
 		{x:-100, y:-100},
 		{x:100, y:-100},
 	],
-	"fixtures": ["porchpath", "mailbox", "door"],
+	"fixtures": ["northofhouse", "mailbox", "door"],
 	"items": []
 }

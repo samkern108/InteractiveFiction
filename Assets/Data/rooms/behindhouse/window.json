@@ -21,7 +21,7 @@
 				"start": 1,
 				"text": "To kitchen.",
 				"prompt": {
-					"text": "To kitchen.",
+					"text": "I can just manage to squeeze through the window.",
 					"button": "x",
 					"exit": {
 						"end_room": "kitchen",
@@ -32,7 +32,7 @@
 				"start": 0,
 				"text": "Open Window.",
 				"prompt": {
-					"text": "Open Window.",
+					"text": "The small window is slightly ajar, and without bars.",
 					"button": "x",
 					"condition":{
 						"name":"open_window",

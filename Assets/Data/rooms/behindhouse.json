@@ -1,12 +1,12 @@
 {
-	"name": "porch",
-	"nameFancy": "Front Porch",
+	"name": "behindhouse",
+	"nameFancy": "Behind House",
 	"bounds": [
 		{x:100, y:100},
 		{x:-100, y:100},
 		{x:-100, y:-100},
 		{x:100, y:-100},
 	],
-	"fixtures": ["path", "window"],
+	"fixtures": ["staircase", "window"],
 	"items": []
 }

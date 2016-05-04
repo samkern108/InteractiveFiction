@@ -1,0 +1,28 @@
+{
+	"name": "staircase",
+	"nameFancy": "Creaky Staircase",
+	"compass": true,
+	"midpoint": {
+		"x": 100,
+		"y": 100
+	},
+	"bounds": [{
+		"radius": 20,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "The stairs are worn and damp. A musk creeps up from under each floorboard.",
+				"prompt": {
+					"text": "To North of House",
+					"button": "x",
+					"exit": {
+						"end_room": "northofhouse",
+						"entrance": "staircase"
+					}
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

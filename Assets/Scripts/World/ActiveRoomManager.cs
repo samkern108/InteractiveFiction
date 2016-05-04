@@ -20,7 +20,6 @@ public class ActiveRoomManager : MonoBehaviour {
 
 	public void ExitToRoom (string endRoom, string entrance)
 	{
-		Debug.Log (endRoom);
 		//TODO gotta move the player as well
 		ClearCurrentRoom();
 		SetActiveRoom (IOManager.LoadRoom (endRoom));

@@ -73,12 +73,14 @@ public class Bound : MonoBehaviour {
 
 	private void Exit()
 	{
-		DisplayText.ClearDisplayText ();
-		activeBound = null;
+		if (activeBound == this) {
+			DisplayText.ClearDisplayText ();
+			activeBound = null;
 
-		PromptPrefab.HidePrompt ();
+			PromptPrefab.HidePrompt ();
+		}
 
-		if(jukebox != null) {
+		if (jukebox != null) {
 			jukebox.StopPlaying ();
 		}
 	}

@@ -4,7 +4,7 @@
 	"compass": true,
 	"midpoint": {
 		"x": 70,
-		"y": 10
+		"y": -100
 	},
 	"conditions": {
 		"locked": {
@@ -34,7 +34,7 @@
 				"prompt": {
 					"text": "Enter House.",
 					"button": "x",
-					"displaytext": "The door appears to be locked."
+					"displaytext": "The door is locked, and there is evidently no key."
 				}
 			}]
 		}],

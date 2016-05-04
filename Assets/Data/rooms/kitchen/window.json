@@ -12,12 +12,12 @@
 			"name": "open_window",
 			"intervals": [{
 				"start": 1,
-				"text": "To kitchen.",
+				"text": "To North of House.",
 				"prompt": {
-					"text": "To kitchen.",
+					"text": "Climb back through the window.",
 					"button": "x",
 					"exit": {
-						"end_room": "kitchen",
+						"end_room": "northofhouse",
 						"entrance": "window"
 					}
 				}

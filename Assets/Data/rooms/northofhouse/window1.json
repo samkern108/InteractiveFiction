@@ -1,0 +1,25 @@
+{
+	"name": "window1",
+	"nameFancy": "Barred Window",
+	"compass": true,
+	"midpoint": {
+		"x": 0,
+		"y": 30
+	},
+	"bounds": [{
+		"radius": 10,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "There's no door, and all of the windows are barred.",
+				"prompt": {
+					"text": "Open Window.",
+					"button": "x",
+					"displaytext": "I can't force it open."
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

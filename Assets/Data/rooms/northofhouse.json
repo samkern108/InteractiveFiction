@@ -1,0 +1,12 @@
+{
+	"name": "northofhouse",
+	"nameFancy": "North of House",
+	"bounds": [
+		{x:100, y:100},
+		{x:-100, y:100},
+		{x:-100, y:-100},
+		{x:100, y:-100},
+	],
+	"fixtures": ["path", "window1", "window2", "window3", "staircase"],
+	"items": []
+}

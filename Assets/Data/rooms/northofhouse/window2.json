@@ -1,0 +1,25 @@
+{
+	"name": "window2",
+	"nameFancy": "Crooked Window",
+	"compass": true,
+	"midpoint": {
+		"x": 0,
+		"y": 55
+	},
+	"bounds": [{
+		"radius": 10,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "One of the bars is cut. It looks too sharp to mess with.",
+				"prompt": {
+					"text": "Open Window.",
+					"button": "x",
+					"displaytext": "I don't want to go anywhere near that."
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}

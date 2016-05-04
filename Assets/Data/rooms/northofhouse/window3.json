@@ -1,0 +1,25 @@
+{
+	"name": "window3",
+	"nameFancy": "Corroded Window",
+	"compass": true,
+	"midpoint": {
+		"x": 0,
+		"y": 100
+	},
+	"bounds": [{
+		"radius": 10,
+		"textConditions": [{
+			"name": "warmth",
+			"intervals": [{
+				"start": 0,
+				"text": "The bars on the window are corroded, but still strong.",
+				"prompt": {
+					"text": "Open Window.",
+					"button": "x",
+					"displaytext": "This one won't budge, either."
+				}
+			}]
+		}],
+		"passable": true
+	}]
+}
