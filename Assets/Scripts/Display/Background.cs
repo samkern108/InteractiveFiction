@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Background : MonoBehaviour {
@@ -9,7 +9,7 @@ public class Background : MonoBehaviour {
 	void Start()
 	{
 		bgMat = GetComponent<Renderer> ().material;
-		bgMat.SetColor ("_EmissionColor", Color.white);
+		//bgMat.SetColor ("_EmissionColor", Color.white);
 		instance = this;
 	}
 	
